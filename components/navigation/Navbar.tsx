@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { useRef } from "react";
+import { memo, useRef } from "react";
 import { Open_Sans } from "next/font/google";
 import { useSelector } from "react-redux";
 
@@ -10,7 +10,7 @@ const font = Open_Sans({
   preload: true,
   weight: ["400", "700"],
 });
-export default function Navbar(): JSX.Element {
+const Navbar = (): JSX.Element => {
   const menuBarRef = useRef<HTMLUListElement>(null);
   const diplayMenu = (): void => {
     menuBarRef.current?.classList.toggle("left-[120%]");
@@ -62,4 +62,5 @@ export default function Navbar(): JSX.Element {
       </header>
     </>
   );
-}
+};
+export default memo(Navbar);

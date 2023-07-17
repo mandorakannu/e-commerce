@@ -1,3 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.bg-women {
+  background-image: url("../public/images/women-fashion.jpg");
+  background-position: right;
+  background-size: cover;
+}
+.bg-men {
+  background-image: url("../public/images/men-fashion.jpg");
+  background-position: center;
+  background-size: cover;
+}
+.bg-shoes {
+  background-image: url("../public/images/footwear.jpg");
+  background-position: right;
+  background-size: cover;
+}
+
+@media screen and (max-width: 640px) {
+  .bg-men {
+    background-position: left;
+  }
+}

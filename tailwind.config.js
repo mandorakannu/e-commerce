@@ -1,18 +1,38 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    './pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './components/**/*.{js,ts,jsx,tsx,mdx}',
-    './app/**/*.{js,ts,jsx,tsx,mdx}',
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      colors: {
+        primary: {
+          50: "#EFFFFD",
+          100: "#B8FFF9",
+          200: "#85F4FF",
+          300: "#42C2FF",
+        },
+        secondary: {
+          50: "#F8F6F4",
+          100: "#E3F4F4",
+          200: "#D2E9E9",
+          300: "#C4DFDF",
+        },
+        tertiary: {
+          50: "#FAF7F0",
+          100: "#CDFCF6",
+          200: "#BCCEF8",
+          300: "#98A8F8",
+        },
+        backgroundImage: {
+          women: "url('/images/women-fashion.jpg')",
+          men: "url('/images/men-fashion.jpg')",
+          shoes: "url('/images/footwear.jpg')",
+        },
       },
     },
+    plugins: [],
   },
-  plugins: [],
-}
+};

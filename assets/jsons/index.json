@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "title": "20% Off On Tank Tops",
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ac dictum.",
+    "image": "https://via.placeholder.com/600/92c952",
+    "backgroundImage": "/images/women-fashion.jpg",
+    "classValue": "bg-women"
+  },
+  {
+    "id": 2,
+    "title": "Latest Eyewear For You",
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ac dictum.",
+    "image": "https://via.placeholder.com/600/771796",
+    "backgroundImage": "/images/men-fashion.jpg",
+    "classValue": "bg-men"
+  },
+  {
+    "id": 3,
+    "title": "Let's Lorem Suit Up!",
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ac dictum.",
+    "image": "https://via.placeholder.com/600/24f355",
+    "backgroundImage": "/images/footwear.jpg",
+    "classValue": "bg-shoes"
+  }
+]

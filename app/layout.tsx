@@ -1,5 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
+import ChakraProvider from "@components/chakraUI/Providers";
 import { Inter } from "next/font/google";
 import Navbar from "@components/navigation/Navbar";
 import { Analytics } from "@vercel/analytics/react";
@@ -20,9 +21,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Navbar />
-        {children}
-        <Footer />
+        <ChakraProvider>
+          <Navbar />
+          {children}
+          <Footer />
+        </ChakraProvider>
         <Analytics />
       </body>
     </html>

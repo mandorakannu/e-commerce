@@ -26,11 +26,6 @@ module.exports = {
           200: "#BCCEF8",
           300: "#98A8F8",
         },
-        backgroundImage: {
-          women: "url('/images/women-fashion.jpg')",
-          men: "url('/images/men-fashion.jpg')",
-          shoes: "url('/images/footwear.jpg')",
-        },
       },
     },
     plugins: [],

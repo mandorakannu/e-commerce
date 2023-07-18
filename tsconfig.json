@@ -20,11 +20,8 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"],
       "@components/*": ["./components/*"],
-      "@assets/*": ["./assets/*"],
       "@styles/*": ["./assets/styles/*"],
-      "@utils/*": ["./utils/*"],
       "@hooks/*": ["./hooks/*"],
       "@store/*": ["./store/*"],
       "@customTypes/*": ["./assets/customTypes/*"],

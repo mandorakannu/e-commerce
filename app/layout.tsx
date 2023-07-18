@@ -5,6 +5,7 @@ import { Inter } from "next/font/google";
 import Navbar from "@components/navigation/Navbar";
 import { Analytics } from "@vercel/analytics/react";
 import Footer from "@components/navigation/Footer";
+import ReduxProvider from "@components/redux/Provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,11 +22,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ChakraProvider>
-          <Navbar />
-          {children}
-          <Footer />
-        </ChakraProvider>
+        <ReduxProvider>
+          <ChakraProvider>
+            <Navbar />
+            {children}
+            <Footer />
+          </ChakraProvider>
+        </ReduxProvider>
         <Analytics />
       </body>
     </html>

@@ -11,9 +11,18 @@ import Link from "next/link";
 export default function Cart() {
   const dispatch = useDispatch();
   const products = useSelector((state: RootState) => state.products);
-  console.log(products);
   return (
     <>
+      {products.length === 0 && (
+        <div className="flex flex-col justify-center items-center gap-4 p-4 text-center w-full h-[70dvh]">
+          <h1 className="text-xl font-bold">Your Cart is Empty</h1>
+          <Link href="/shop">
+            <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold px-4 py-2 rounded mx-3">
+              Go Shopping
+            </button>
+          </Link>
+        </div>
+      )}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 m-4">
         {products.map((product: IProducts) => (
           <div

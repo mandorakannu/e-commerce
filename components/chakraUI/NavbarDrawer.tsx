@@ -12,9 +12,11 @@ import {
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { useSelector } from "react-redux";
+import { RootState } from "@store/store";
 
 const NavbarDrawer = () => {
-  const cartItems = 0; // It will be a coming from store using redux useSelector hook.
+  const cartItems = useSelector((state: RootState) => state.products.length); // It will be a coming from store using redux useSelector hook.
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (

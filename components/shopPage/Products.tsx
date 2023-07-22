@@ -11,13 +11,20 @@ const Products = () => {
 
   useLayoutEffect(() => {
     const getProducts = async () => {
-      const res = await fetch("https://api.mandorakannu.tech/api/products", {cache: "force-cache"});
+      const res = await fetch("https://api.mandorakannu.tech/api/products", {
+        cache: "force-cache",
+      });
       const data: IProducts = await res.json();
       setProducts(data);
     };
     getProducts();
   }, []);
-
+  const addToCart = (product: IProducts, id: number) => {
+    const productElement = document?.querySelector<Element>(`#product-${id}`);
+    productElement!.innerHTML = "Adding To Cart";
+    dispatch(addProduct(product));
+    productElement!.innerHTML = "Added To Cart";
+  };
   return (
     <>
       <div className="container">
@@ -37,10 +44,11 @@ const Products = () => {
                 <h1 className="text-xl font-bold">{product.title}</h1>
                 <p className="text-xl font-bold">${product.price}</p>
                 <button
+                  id={`product-${product.id}`}
                   className="bg-blue-500 hover:bg-blue-600 text-white font-bold px-4 py-2 rounded"
-                  onClick={() => dispatch(addProduct(product))}
+                  onClick={() => addToCart(product, product.id)}
                 >
-                  Add to cart
+                  Add To Cart
                 </button>
               </div>
             ))}

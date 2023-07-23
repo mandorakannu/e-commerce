@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { addProduct } from "@store/slices/productSlice";
 import IProducts from "@customTypes/IProducts";
 import Image from "next/image";
+import axios from "axios";
 
 const Products = () => {
   const dispatch = useDispatch();
@@ -19,10 +20,22 @@ const Products = () => {
     };
     getProducts();
   }, []);
-  const addToCart = (product: IProducts, id: number) => {
+
+  const addToDatabase = async (product: IProducts) => {
+    try {
+      const res = await axios.post("/api/cart", { product });
+      if (res.status === 200) {
+        dispatch(addProduct(product));
+        addToCart(product.id);
+      } else {
+        alert("Something went wrong");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const addToCart = (id: number) => {
     const productElement = document?.querySelector<Element>(`#product-${id}`);
-    productElement!.innerHTML = "Adding To Cart";
-    dispatch(addProduct(product));
     productElement!.innerHTML = "Added To Cart";
   };
   return (
@@ -46,7 +59,7 @@ const Products = () => {
                 <button
                   id={`product-${product.id}`}
                   className="bg-blue-500 hover:bg-blue-600 text-white font-bold px-4 py-2 rounded"
-                  onClick={() => addToCart(product, product.id)}
+                  onClick={() => addToDatabase(product)}
                 >
                   Add To Cart
                 </button>

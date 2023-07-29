@@ -10,6 +10,7 @@ interface IProducts {
         rate: number;
         count: number;
     };
+    quantity: number;
 }[]
 
 export default IProducts;

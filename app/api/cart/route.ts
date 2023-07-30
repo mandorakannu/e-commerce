@@ -1,13 +1,22 @@
 import { connectDB, disconnectDB } from "@database/connection";
 import { NextRequest, NextResponse } from "next/server";
 import cart from "@models/cartModel";
-export async function POST(req: NextRequest, res: NextResponse) {
+export async function POST(request: NextRequest, response: NextResponse) {
   try {
     await connectDB();
-    const { product } = await req.json();
-    console.log(product)
+    const { updateProduct } = await request.json();
     const { id, title, price, description, category, image, rating, quantity } =
-      product;
+      updateProduct;
+    const isProductAvailable = await cart.findOne({ id });
+    if (isProductAvailable) {
+      await cart.findOneAndUpdate(
+        { id },
+        { $set: { quantity: isProductAvailable.quantity + 1 } }
+      );
+      return new Response(
+        JSON.stringify({ message: "Product Quantity Is Updated!" })
+      );
+    }
     await cart.create({
       id,
       title,

@@ -40,10 +40,12 @@ const Products = () => {
 
   const addToDatabase = async (product: IProducts) => {
     setLoadingProductId(product.id.toString());
+    const updateProduct = { ...product, quantity: 1 };
     try {
-      const res = await axios.post("/api/cart", { product });
+      const res = await axios.post("/api/cart", { updateProduct });
       if (res.status === 200) {
         dispatch(addProduct(product));
+        alert("Product added to cart");
       } else {
         alert("Something went wrong" + res.status);
       }

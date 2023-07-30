@@ -1,11 +1,27 @@
 "use client";
-import { useLayoutEffect, useState } from "react";
+import { useState, useLayoutEffect } from "react";
 import { useDispatch } from "react-redux";
 import { addProduct } from "@store/slices/productSlice";
 import IProducts from "@customTypes/IProducts";
 import Image from "next/image";
+import axios from "axios";
+import { Oval } from "react-loader-spinner";
 
 const Products = () => {
+  const oval = (
+    <Oval
+      height={20}
+      width={20}
+      color="rgb(59 130 246)"
+      wrapperStyle={{}}
+      wrapperClass=""
+      visible={true}
+      ariaLabel="oval-loading"
+      secondaryColor="white"
+      strokeWidth={2}
+      strokeWidthSecondary={2}
+    />
+  );
   const dispatch = useDispatch();
   const [products, setProducts] = useState<IProducts>();
 
@@ -19,11 +35,26 @@ const Products = () => {
     };
     getProducts();
   }, []);
-  const addToCart = (product: IProducts, id: number) => {
-    const productElement = document?.querySelector<Element>(`#product-${id}`);
-    productElement!.innerHTML = "Adding To Cart";
-    dispatch(addProduct(product));
-    productElement!.innerHTML = "Added To Cart";
+
+  const [loadingProductId, setLoadingProductId] = useState<string | null>(null);
+
+  const addToDatabase = async (product: IProducts) => {
+    setLoadingProductId(product.id.toString());
+    const updateProduct = { ...product, quantity: 1 };
+    try {
+      const res = await axios.post("/api/cart", { updateProduct });
+      if (res.status === 200) {
+        dispatch(addProduct(product));
+        alert("Product added to cart");
+      } else {
+        alert("Something went wrong" + res.status);
+      }
+    } catch (error) {
+      alert("INTERNAL SERVER ERROR");
+      console.log(error);
+    } finally {
+      setLoadingProductId("");
+    }
   };
   return (
     <>
@@ -45,10 +76,14 @@ const Products = () => {
                 <p className="text-xl font-bold">${product.price}</p>
                 <button
                   id={`product-${product.id}`}
-                  className="bg-blue-500 hover:bg-blue-600 text-white font-bold px-4 py-2 rounded"
-                  onClick={() => addToCart(product, product.id)}
+                  className="bg-blue-500 hover:bg-blue-600 text-white font-bold px-4 py-2 rounded w-1/2 flex items-center justify-center"
+                  onClick={() => addToDatabase(product)}
                 >
-                  Add To Cart
+                  <span>
+                    {loadingProductId == product.id.toString()
+                      ? oval
+                      : "Add to cart"}
+                  </span>
                 </button>
               </div>
             ))}

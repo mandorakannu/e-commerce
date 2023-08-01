@@ -21,7 +21,13 @@ const NavbarDrawer = () => {
 
   return (
     <>
-      <Button onClick={onOpen} className="bg-transparent hover:bg-transparent">
+      <Button
+        onClick={onOpen}
+        backgroundColor={"transparent"}
+        _hover={{ backgroundColor: "transparent" }}
+        _focus={{ backgroundColor: "transparent" }}
+        _active={{ backgroundColor: "transparent" }}
+      >
         <GiHamburgerMenu size={30} />
       </Button>
       <Drawer isOpen={isOpen} placement="left" onClose={onClose}>

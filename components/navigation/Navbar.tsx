@@ -24,12 +24,15 @@ const Navbar = (): JSX.Element => {
                 marginRight={"1rem"}
                 as={Button}
                 rightIcon={<ChevronDownIcon />}
-                className="bg-transparent hover:bg-transparent focus:bg-transparent"
+                backgroundColor={"transparent"}
+                _hover={{ backgroundColor: "transparent" }}
+                _focus={{ backgroundColor: "transparent" }}
+                _active={{ backgroundColor: "transparent" }}
               >
                 Welcome!
               </MenuButton>
               <MenuList>
-              <Link href="/login">
+                <Link href="/login">
                   <MenuItem className="hover:bg-blue-500 hover:text-white transition-colors delay-75">
                     Login
                   </MenuItem>

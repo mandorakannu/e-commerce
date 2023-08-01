@@ -54,7 +54,7 @@ function AlertDialogBox({ title, productId, product }: IAlertType) {
                 {title}
               </AlertDialogHeader>
 
-              <AlertDialogBody>{`You are really wants to delete ${filterItem[0].title} from cart?`}</AlertDialogBody>
+              <AlertDialogBody className="flex justify-start items-start flex-col gap-4"><span>{`You are really wants to delete ${filterItem[0].title} from cart?`}</span> <strong>Quantity: {filterItem[0].quantity}</strong></AlertDialogBody>
 
               <AlertDialogFooter>
                 <Button
@@ -66,7 +66,7 @@ function AlertDialogBox({ title, productId, product }: IAlertType) {
                   Cancel
                 </Button>
                 <Button
-                className="bg-red-500 hover:bg-red-600 text-white font-bold px-4 py-2 rounded mx-3"
+                  className="bg-red-500 hover:bg-red-600 text-white font-bold px-4 py-2 rounded mx-3"
                   onClick={() => {
                     currentData?.openDialogFxn(false),
                       removeProductFromCart(filterItem[0].id);

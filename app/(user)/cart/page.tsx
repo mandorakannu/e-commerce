@@ -7,6 +7,7 @@ import IProducts from "@customTypes/IProducts";
 import Link from "next/link";
 import { AlertDialogBox } from "@components/chakraUI/AlertDialog";
 import { AlertDialogContext } from "@store/context/AlertDialog/alertContext";
+import { AiOutlineShoppingCart } from "react-icons/ai"
 
 export default function Cart() {
   const products = useSelector((state: RootState) => state.products);
@@ -54,6 +55,7 @@ export default function Cart() {
             />
             <h1 className="text-xl font-bold">{product.title}</h1>
             <p className="text-xl font-bold">${product.price}</p>
+            <p className="text-xl font-bold flex justify-center items-center"><span className="flex justify-center items-center">Item <AiOutlineShoppingCart /></span> :&nbsp; {product.quantity}</p>
             <section>
               <button
                 className="bg-red-500 hover:bg-red-600 text-white font-bold px-4 py-2 rounded mx-3"

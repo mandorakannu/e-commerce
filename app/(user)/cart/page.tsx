@@ -1,16 +1,26 @@
 "use client";
 import { RootState } from "@store/store";
 import Image from "next/image";
-import React from "react";
+import { useContext } from "react";
 import { useSelector } from "react-redux";
 import IProducts from "@customTypes/IProducts";
-import { removeProduct } from "@store/slices/productSlice";
-import { useDispatch } from "react-redux";
 import Link from "next/link";
+import { AlertDialogBox } from "@components/chakraUI/AlertDialog";
+import { AlertDialogContext } from "@store/context/AlertDialog/alertContext";
 
 export default function Cart() {
-  const dispatch = useDispatch();
   const products = useSelector((state: RootState) => state.products);
+  const data = useContext(AlertDialogContext);
+  const isProductRemoved = (id: number) => {
+    data?.setProductIdFxn(`product-${id}`);
+    if (!data?.state) {
+      data?.openDialogFxn(true);
+      data?.setProductIdFxn(`product-${id}`);
+    }
+    else {
+      data?.openDialogFxn(false);
+    }
+  };
   return (
     <>
       {products.length === 0 && (
@@ -29,6 +39,13 @@ export default function Cart() {
             key={product.id}
             className="flex flex-col justify-center items-center gap-4 border-2 border-blue-500 p-4 text-center w-full h-[70dvh]"
           >
+            {data?.state ? (
+              <AlertDialogBox
+                title="Delete Cart Item"
+                productId={`product-${product.id}`}
+                product={products}
+              />
+            ) : null}
             <Image
               src={product.image}
               width={100}
@@ -40,7 +57,7 @@ export default function Cart() {
             <section>
               <button
                 className="bg-red-500 hover:bg-red-600 text-white font-bold px-4 py-2 rounded mx-3"
-                onClick={() => dispatch(removeProduct(product.id))}
+                onClick={() => isProductRemoved(product.id)}
               >
                 Remove
               </button>

@@ -1,5 +1,5 @@
 "use client";
-import { useState, useLayoutEffect } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { addProduct } from "@store/slices/productSlice";
 import IProducts from "@customTypes/IProducts";
@@ -25,7 +25,7 @@ const Products = () => {
   const dispatch = useDispatch();
   const [products, setProducts] = useState<IProducts>();
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const getProducts = async () => {
       const res = await fetch("https://api.mandorakannu.tech/api/products", {
         cache: "force-cache",

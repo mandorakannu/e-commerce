@@ -28,7 +28,8 @@
       "@jsons/*": ["./assets/jsons/*"],
       "@images/*": ["./public/images/*"],
       "@database/*": ["./utils/database/*"],
-      "@models/*": ["./utils/models/*"]
+      "@models/*": ["./utils/models/*"],
+      "@utils/*": ["./utils/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

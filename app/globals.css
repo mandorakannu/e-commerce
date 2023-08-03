@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  scroll-behavior: smooth !important;
+}
 .bg-women {
   background-image: url("../public/images/women-fashion.jpg");
   background-position: right;

@@ -3,7 +3,7 @@ import { disconnect } from "mongoose";
 
 export const connectDB = async () => {
   try {
-    connect(process.env.DATABASE!);
+    await connect(process.env.DATABASE!);
     console.log("MongoDB Connected");
   } catch (err) {
     console.error("ERROR IN CONNECTING TO MONGODB", err);

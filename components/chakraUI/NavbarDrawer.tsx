@@ -56,6 +56,12 @@ const NavbarDrawer = () => {
               Shop
             </Link>
             <Link
+              href="/orders"
+              className="block hover:bg-primary-50 hover:text-blue-500 border-l-4 border-transparent hover:border-blue-500 my-6 p-3 transition-colors duration-150 ease-in-out"
+            >
+              Orders
+            </Link>
+            <Link
               href="/cart"
               className="block hover:bg-primary-50 hover:text-blue-500 border-l-4 border-transparent hover:border-blue-500 my-6 p-3 transition-colors duration-150 ease-in-out"
             >

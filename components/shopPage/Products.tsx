@@ -27,7 +27,7 @@ const Products = () => {
 
   useEffect(() => {
     const getProducts = async () => {
-      const res = await fetch("https://api.mandorakannu.tech/api/products", {
+      const res = await fetch(process.env.NEXT_PUBLIC_PRODUCT_API as string, {
         cache: "force-cache",
       });
       const data: IProducts = await res.json();

@@ -5,7 +5,7 @@ const nextConfig = {
       "ik.imagekit.io",
       "lh3.googleusercontent.com",
       "avatars.githubusercontent.com",
-      "api.mandorakannu.rocks",
+      "api.mandorakannu.xyz",
     ],
   },
 };

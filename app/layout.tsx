@@ -64,14 +64,14 @@ export const metadata: Metadata = {
     siteId: "@mandorakannu",
     creator: "@KannuMandora",
     creatorId: "1467726470533754880",
-    images: ["https://www.mandorakannu.rocks/images/logo.svg"],
+    images: ["https://www.mandorakannu.xyz/images/logo.svg"],
   },
-  authors: [{ name: "Kannu Mandora", url: "https://mandorakannu.tech" }, { name: "Kannu Mandora", url: "https://mandorakannu.me" }, { name: "Kannu Mandora", url: "https://mandorakannu.rocks" }],
+  authors: [{ name: "Kannu Mandora", url: "https://mandorakannu.xyz" }, { name: "Kannu Mandora", url: "https://mandorakannu.xyz" }, { name: "Kannu Mandora", url: "https://mandorakannu.xyz" }],
   viewport: "width=device-width, initial-scale=1.0",
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://www.mandorakannu.rocks/",
+    url: "https://www.mandorakannu.xyz/",
     title: "MK Store | Kannu Mandora",
     description:
       "This Website Provides Useful products in very cheap price. This Website is made by Kannu Mandora.",
@@ -80,7 +80,7 @@ export const metadata: Metadata = {
     emails: "mandorakannu@gmail.com",
     images: [
       {
-        url: "https://www.mandorakannu.rocks/images/logo.svg",
+        url: "https://www.mandorakannu.xyz/images/logo.svg",
         width: 512,
         height: 512,
         alt: "MK Store | Kannu Mandora",
